@@ -1,12 +1,12 @@
 
-var topics = ["Mecha","Dark Souls","Spyro"]
+var topics = ["Mecha","Dark Souls","Spyro","The Incredibles"]
 var alertTimeOut
 
 function displayGif() {
 
     var topic = $(this).attr("data-name");
     var offset = Math.floor(Math.random() * 50);
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=XXiv9Vg02nJ9OdVvA56jjcLTXgfeVsiJ&limit=10&offset=" + offset;
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q='" + topic + "'&api_key=XXiv9Vg02nJ9OdVvA56jjcLTXgfeVsiJ&limit=10&offset=" + offset;
 
     $.ajax({
       url: queryURL,
@@ -52,13 +52,15 @@ function displayGif() {
   $("#add-topic").on("click", function(event) {
     event.preventDefault();
     var topicIn = $("#topic-input").val().trim();
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topicIn + "&api_key=XXiv9Vg02nJ9OdVvA56jjcLTXgfeVsiJ&limit=10";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q='" + topicIn + "'&api_key=XXiv9Vg02nJ9OdVvA56jjcLTXgfeVsiJ&limit=10";
 
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
       var result = response.data;
+      console.log(result.length);
+      console.log(result);
         if (result.length === 0){
             var alert = $("#alert")
             alert.text("No Gifs Detected! Try a different topic.").css("opacity","1")

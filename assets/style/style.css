@@ -8,6 +8,8 @@
 
 .gifDiv:hover .title {
     opacity: .9;
+    background-color: #404040;
+    padding-right: 2%;
 }
 
 h3 {
