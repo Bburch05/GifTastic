@@ -14,7 +14,7 @@ function displayGif() {
     }).then(function(response) {
       var result = response.data;
       $(".instructions").text("Click a Gif to animate it!")
-     
+      $(".gifHolder").empty()
       for (var j = 0; j < result.length; j++){
       var gifDiv = $("<div>").attr("class","gifDiv");
       
